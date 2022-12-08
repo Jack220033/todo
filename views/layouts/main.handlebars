@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{titre}}</title>
+
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    {{#each styles}}
+        <link rel="stylesheet" href="{{this}}">
+    {{/each}}
+
+    <script type="module" src="/js/accept-cookie.js"></script>
+
+    {{#each scripts}}
+        <script type="module" src="{{this}}"></script>
+    {{/each}}
+</head>
+<body>
+    {{>header}}
+
+    <!--{{afficheArgent argent}}-->
+
+    <main>
+        {{#unless accept}}
+            <div id="message-cookie">
+                Ce site web utilise des cookies. Si vous naviguez sur ce site web, vous acceptez l'utilisation des cookies. 
+                <input type="button" value="Accepter" id="button-cookie">
+            </div>
+        {{/unless}}
+
+        <div>
+            Nombre de fois visité: {{count}}
+        </div>
+
+        <div>
+            Utilisateur: {{user.nom_utilisateur}}
+        </div>
+
+        {{{body}}}
+    </main>
+</body>
+</html>
